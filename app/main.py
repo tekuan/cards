@@ -2,6 +2,7 @@ import httpx
 from prefect import flow, task
 from flask import Flask, render_template, request, redirect, url_for
 from app.database import add_card, add_new_cards, get_all_cards,get_card_by_id, update_card, delete_card
+import time
 
 app = Flask(__name__)
 base_url = "https://deckofcardsapi.com/api/deck/"
@@ -52,7 +53,8 @@ def get_new_card():
     cards = get_deck_cards_data(deck_id, 1)
     return cards
 
-@task
+
+@task(retries=3, retry_delay_seconds=5)
 def get_deck_id_data():
     url = base_url + "new/shuffle/?deck_count=1"
     response = httpx.get(url)
