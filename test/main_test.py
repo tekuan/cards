@@ -1,5 +1,10 @@
+import sys
+import os
 import pytest
-from app.main import get_deck_cards_data, get_deck_id_data, get_new_card, httpx
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../app')))
+
+from app.main import get_deck_cards_data, get_deck_id_data, get_new_card
 
 def test_get_deck_id_data():
     deck_id = get_deck_id_data()

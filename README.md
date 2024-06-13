@@ -15,16 +15,19 @@ pip install -r requirements.txt
 Antes de executar o script principal, é necessário aplicar as migrações que configuram o ambiente de banco de dados SQLite3. Utilize o seguinte comando para isso:
 
 ```bash
-python migrations.py
+python migrate.py
 ```
+
 ## Script Principal
 
-Para a execução do script principal:
+Para a execução do script principal, dentro da pasta app:
 
 ```bash
 python main.py
 ```
+
 ### Testes
+
 Os testes foram implementados usando o pytest. Para executar os testes, utilize:
 
 ```bash

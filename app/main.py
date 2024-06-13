@@ -1,8 +1,7 @@
 import httpx
 from prefect import flow, task
 from flask import Flask, render_template, request, redirect, url_for
-from app.database import add_card, add_new_cards, get_all_cards,get_card_by_id, update_card, delete_card
-import time
+from database import add_card, add_new_cards, get_all_cards,get_card_by_id, update_card, delete_card
 
 app = Flask(__name__)
 base_url = "https://deckofcardsapi.com/api/deck/"
