@@ -9,8 +9,8 @@ if not os.path.exists(db_path):
     conn.close()
 
 backend = get_backend(f'sqlite:///{db_path}')
-
 migrations = read_migrations('migrations')
+
 with backend.lock():
     backend.apply_migrations(backend.to_apply(migrations))
 
