@@ -39,3 +39,41 @@ def update(id):
 def delete(id):
     delete_card(id)
     return redirect(url_for('index'))
+
+@app.route('/new/card')
+def new_card():
+    cards = get_new_card()
+    add_new_cards(cards)
+    return redirect(url_for('index'))
+
+@flow
+def get_new_card():
+    deck_id = get_deck_id_data()
+    cards = get_deck_cards_data(deck_id, 1)
+    return cards
+
+@task
+def get_deck_id_data():
+    url = base_url + "new/shuffle/?deck_count=1"
+    response = httpx.get(url)
+    response.raise_for_status()
+    res = response.json()
+    return res['deck_id']
+
+@task
+def get_deck_cards_data(deck_id, count = 2):
+    url = base_url + deck_id + "/draw/?count=" + str(count)
+    response = httpx.get(url)
+    response.raise_for_status()
+    res = response.json()
+    return res['cards']
+
+@flow
+def get_deck_data():
+    deck_id = get_deck_id_data()
+    cards = get_deck_cards_data(deck_id)
+    add_new_cards(cards)
+
+if __name__ == '__main__':
+    get_deck_data()    
+    app.run(debug=True)
