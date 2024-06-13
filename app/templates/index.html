@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deck de Cartas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Deck de Cartas</h1>
+    <a href="/new/card">Adicionar Carta Aleatória</a>
+    <a href="/create">Criar Nova Carta</a>
+    <div class="card-container">
+        {% for card in cards %}
+        <div class="card">
+            <img src="{{ card[2] }}"/>
+            <div class="card-info">
+                <p>Código: <strong>{{ card[1] }}</strong></p>
+                <p>Valor: <strong>{{ card[3] }}</strong></p>
+                <p>Naipe: <strong>{{ card[4] }}</strong></p>
+            </div>
+            <div class="card-links">
+                <a href="/update/{{ card[0] }}"><i class="fa fa-pencil"></i></a>
+                <a href="/delete/{{ card[0] }}"><i class="fa fa-trash"></i></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

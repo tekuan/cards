@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Carta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Criar Nova Carta</h1>
+    <div class="form-container">
+        <form method="POST">
+            <label for="code">Código:</label>
+            <input type="text" id="code" name="code" placeholder="Insira o código" required><br>
+            <label for="image">URL da Imagem:</label>
+            <input type="url" id="image" name="image" placeholder="Insira a URL da imagem" required><br>
+            <label for="value">Valor:</label>
+            <input type="text" id="value" name="value" step="0.01" placeholder="Insira o valor" required><br>
+            <label for="suit">Naipe:</label>
+            <input type="text" id="suit" name="suit" placeholder="Insira o naipe" required><br>
+            <div class="form-buttons">
+                <button type="button" onclick="history.back()" class="back-btn">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+                </button>
+                <button type="submit">Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
