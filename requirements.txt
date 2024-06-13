@@ -1,5 +1,3 @@
 Flask
 prefect
 requests
-SQLAlchemy
-Alembic
